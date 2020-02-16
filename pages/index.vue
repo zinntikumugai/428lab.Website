@@ -22,18 +22,22 @@
     </div>
     <div class="row mt-4">
       <section class="col-lg-6 ">
-        <h3 class="">イベント情報、お知らせ</h3>
+        <h3 class="">ブログ記事</h3>
         <ul>
-          <li>
-            <a
-              href="https://blog.428lab.net/entry/2020/01/23/213633"
-              target="_blank"
-              >ラボもくもく会について</a
-            >
+          <li v-for="item in articles" :key="item.event_id" target="_blank">
+            <a :href="item.link[0]" target="_blank">{{ item.title[0] }}</a>
           </li>
         </ul>
       </section>
       <section class="col-lg-6 ">
+        <h3 class="">イベント情報</h3>
+        <ul>
+          <li v-for="item in events" :key="item.event_id" target="_blank">
+            <a :href="item.event_url" target="_blank">{{ item.title }}</a>
+          </li>
+        </ul>
+      </section>
+      <section class="col-12">
         <h3 class="">スポンサー</h3>
         <ul>
           <li>
@@ -52,3 +56,44 @@
     <div class="p-5"></div>
   </article>
 </template>
+
+<script>
+import axios from "axios";
+import xml2js from "xml2js";
+
+export default {
+  data() {
+    return {
+      events: [],
+      articles: []
+    };
+  },
+  async asyncData({ app }) {
+    const eventResponse = await axios.get(
+      "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10"
+    );
+    const blogResponse = await axios.get("https://blog.428lab.net/rss");
+    // axios.get(`RSSのURL`)
+    //     .then((res) => {
+    //       var parseString = require('xml2js').parseString
+    //       var xml = res.data
+    //       parseString(xml, (message, xmlres) => {
+    //         callback(null, {data: xmlres.rss.channel[0].item})
+    //       })
+    //     })
+    //     .catch((e) => {
+    //       callback({ statusCode: 404, message: 'ページが見つかりません' })
+    //     })
+    let blogitems = {
+    }
+    xml2js.parseString(blogResponse.data, (message, xmlres) => {
+      blogitems = xmlres.rss.channel[0].item;
+    });
+
+    return {
+      events: eventResponse.data.events,
+      articles: blogitems
+    };
+  }
+};
+</script>
