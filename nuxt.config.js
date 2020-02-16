@@ -50,12 +50,27 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+  },
+  proxy: {
+    '/connpass': {
+      target: 'https://connpass.com/',
+      pathRewrite: {
+        '^/connpass' : '/'
+      }
+    },
+    '/hatena': {
+      target: 'https://blog.428lab.net',
+      pathRewrite: {
+        '^/hatena' : ''
+      }
+    }
   },
   /*
   ** Build configuration
