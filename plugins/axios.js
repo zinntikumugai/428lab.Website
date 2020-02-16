@@ -3,6 +3,6 @@ export default function({ $axios, redirect }) {
 
     // 注: ここの引数を今は使わないからと _ とかにするとエラーになる
     $axios.onResponse(config => {
-        $axios.setHeader('Access-Control-Allow-Origin', /** 許可するドメイン http://exsample.com あるいは通すだけなら '*' **/ )
+        $axios.setHeader('Access-Control-Allow-Origin', '*')
     })
 }
