@@ -1,8 +1,23 @@
 <template>
   <div>
+    <page-header />
     <nuxt />
+    <page-footer />
   </div>
 </template>
+
+<script>
+import PageHeader from "~/components/Page-Header.vue";
+import PageFooter from "~/components/Page-footer.vue";
+
+export default {
+  components: {
+    PageHeader,
+    PageFooter
+  }
+
+}
+</script>
 
 <style>
 html {
