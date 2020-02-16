@@ -94,21 +94,21 @@ export default {
       articles: []
     };
   },
-  // async asyncData({$axios}) {
-  //   const eventResponse = await $axios.$get(
-  //     "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
-  //   );
-  //   const blogResponse = await $axios.$get("/hatena/rss");
-  //   let blogitems = {
-  //   }
-  //   xml2js.parseString(blogResponse, (message, xmlres) => {
-  //     blogitems = xmlres.rss.channel[0].item;
-  //   });
+  async asyncData({$axios}) {
+    const eventResponse = await $axios.$get(
+      "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10"
+    );
+    const blogResponse = await $axios.$get("https://blog.428lab.net/rss");
+    let blogitems = {
+    }
+    xml2js.parseString(blogResponse, (message, xmlres) => {
+      blogitems = xmlres.rss.channel[0].item;
+    });
 
-  //   return {
-  //     events: eventResponse.events,
-  //     articles: blogitems
-  //   };
-  // }
+    return {
+      events: eventResponse.events,
+      articles: blogitems
+    };
+  }
 };
 </script>
