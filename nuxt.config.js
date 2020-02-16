@@ -35,7 +35,7 @@ export default {
      ** Plugins to load before mounting the App
      */
     plugins: [
-        '~/plugins/axios'
+        { src: 'plugins/axios.js', ssr: false }
     ],
     /*
      ** Nuxt.js dev-modules
@@ -49,7 +49,7 @@ export default {
         'bootstrap-vue/nuxt',
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
-        // '@nuxtjs/proxy',
+        '@nuxtjs/proxy',
     ],
     /*
      ** Axios module configuration

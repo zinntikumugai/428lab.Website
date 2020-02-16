@@ -85,7 +85,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import xml2js from "xml2js";
 
 export default {
@@ -96,18 +95,19 @@ export default {
     };
   },
   async asyncData({ app }) {
-    const eventResponse = await axios.get(
+    const eventResponse = await app.$axios.$get(
       "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
     );
-    const blogResponse = await axios.get("/hatena/rss");
+    const blogResponse = await app.$axios.$get("/hatena/rss");
     let blogitems = {
     }
-    xml2js.parseString(blogResponse.data, (message, xmlres) => {
+    console.log(blogResponse);
+    xml2js.parseString(blogResponse, (message, xmlres) => {
       blogitems = xmlres.rss.channel[0].item;
     });
 
     return {
-      events: eventResponse.data.events,
+      events: eventResponse.events,
       articles: blogitems
     };
   }
