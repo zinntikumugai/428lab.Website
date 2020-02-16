@@ -49,7 +49,7 @@ export default {
         'bootstrap-vue/nuxt',
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
-        '@nuxtjs/proxy',
+        // '@nuxtjs/proxy',
     ],
     /*
      ** Axios module configuration
