@@ -8,7 +8,7 @@
 
 <script>
 import PageHeader from "~/components/Page-Header.vue";
-import PageFooter from "~/components/Page-footer.vue";
+import PageFooter from "~/components/Page-Footer.vue";
 
 export default {
   components: {
