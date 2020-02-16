@@ -96,9 +96,9 @@ export default {
   },
   async asyncData({$axios}) {
     const eventResponse = await $axios.$get(
-      "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10"
+      "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
     );
-    const blogResponse = await $axios.$get("https://blog.428lab.net/rss");
+    const blogResponse = await $axios.$get("/blog/rss");
     let blogitems = {
     }
     xml2js.parseString(blogResponse, (message, xmlres) => {

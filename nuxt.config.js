@@ -56,21 +56,21 @@ export default {
      ** See https://axios.nuxtjs.org/options
      */
     axios: {
-        // proxy: true
+        proxy: true
     },
     proxy: {
-        // '/connpass': {
-        //     target: 'https://connpass.com',
-        //     pathRewrite: {
-        //         '^/connpass': ''
-        //     }
-        // },
-        // '/hatena': {
-        //     target: 'https://blog.428lab.net',
-        //     pathRewrite: {
-        //         '^/hatena': ''
-        //     }
-        // }
+        '/connpass': {
+            target: 'https://connpass.com',
+            pathRewrite: {
+                '^/connpass': ''
+            }
+        },
+        '/blog': {
+            target: 'https://blog.428lab.net',
+            pathRewrite: {
+                '^/blog': ''
+            }
+        }
     },
     /*
      ** Build configuration
