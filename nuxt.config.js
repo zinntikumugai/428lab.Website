@@ -5,11 +5,17 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: '四谷ラボ - 技術者のコミュニティ',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
+      // { hid: 'description', name: 'description', content: 'Shinoのプロフィールページ。自己紹介、職務経歴、趣味等。また、過去の制作物などのご紹介' },
+      // { hid: 'og:site_name', property: 'og:site_name', content: 'Shinohara.' },
+      // { hid: 'og:type', property: 'og:type', content: 'website' },
+      // { hid: 'og:url', property: 'og:url', content: 'https://shino3.net/' },
+      // { hid: 'og:title', property: 'og:title', content: 'Shinohara.' },
+      // { hid: 'og:description', property: 'og:description', content: 'Shinoのプロフィールページ。自己紹介、職務経歴、趣味等。また、過去の制作物などのご紹介' },
+      // { hid: 'og:image', property: 'og:image', content: 'https://shino3.net/favicon.ico' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
