@@ -94,14 +94,13 @@ export default {
       articles: []
     };
   },
-  async asyncData({ app }) {
-    const eventResponse = await app.$axios.$get(
+  async asyncData({$axios}) {
+    const eventResponse = await $axios.$get(
       "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
     );
-    const blogResponse = await app.$axios.$get("/hatena/rss");
+    const blogResponse = await $axios.$get("/hatena/rss");
     let blogitems = {
     }
-    console.log(blogResponse);
     xml2js.parseString(blogResponse, (message, xmlres) => {
       blogitems = xmlres.rss.channel[0].item;
     });
