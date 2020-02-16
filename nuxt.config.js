@@ -57,12 +57,13 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true
   },
   proxy: {
     '/connpass': {
-      target: 'https://connpass.com/',
+      target: 'https://connpass.com',
       pathRewrite: {
-        '^/connpass' : '/'
+        '^/connpass' : ''
       }
     },
     '/hatena': {
