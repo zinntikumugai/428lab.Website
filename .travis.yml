@@ -31,7 +31,8 @@ deploy:
   - provider: firebase
     skip-cleanup: true
     project: "lab-website-develop-f0781"
-    token: $FIREBASE_CI
+    token:
+      secure: $FIREBASE_CI
     on:
       branch: develop
 
