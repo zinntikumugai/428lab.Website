@@ -1,5 +1,5 @@
 export default {
-    mode: 'universal',
+    mode: 'spa',
     /*
      ** Headers of the page
      */
@@ -58,20 +58,20 @@ export default {
     axios: {
         // proxy: true
     },
-    proxy: {
-        // '/connpass': {
-        //     target: 'https://connpass.com',
-        //     pathRewrite: {
-        //         '^/connpass': ''
-        //     }
-        // },
-        // '/hatena': {
-        //     target: 'https://blog.428lab.net',
-        //     pathRewrite: {
-        //         '^/hatena': ''
-        //     }
-        // }
-    },
+    // proxy: {
+    //     '/connpass': {
+    //         target: 'https://connpass.com',
+    //         pathRewrite: {
+    //             '^/connpass': ''
+    //         }
+    //     },
+    //     '/blog': {
+    //         target: 'https://blog.428lab.net',
+    //         pathRewrite: {
+    //             '^/blog': ''
+    //         }
+    //     }
+    // },
     /*
      ** Build configuration
      */
