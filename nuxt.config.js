@@ -1,5 +1,5 @@
 export default {
-  mode: 'spa',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -57,9 +57,9 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    proxy: true,
-    // baseURL: process.browser ? '' : 'http://localhost'
-    baseURL: ''
+    // proxy: true,
+    baseURL: process.browser ? '' : 'http://localhost:3000'
+    // baseURL: '/'
   },
   proxy: {
     '/connpass': {
