@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "lab-website-develop-f0781"
+    "default": "lab-website-72041",
+    "develop": "lab-website-develop-f0781"
   }
 }
