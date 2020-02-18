@@ -48,6 +48,7 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
   ],
   /*
    ** Axios module configuration
@@ -57,18 +58,18 @@ export default {
     // proxy: true,
   },
   proxy: {
-    // '/connpass': {
-    //   target: 'https://connpass.com',
-    //   pathRewrite: {
-    //     '^/connpass': ''
-    //   }
-    // },
-    // '/blog': {
-    //   target: 'https://blog.428lab.net',
-    //   pathRewrite: {
-    //     '^/blog': ''
-    //   }
-    // }
+    '/connpass': {
+      target: 'https://connpass.com',
+      pathRewrite: {
+        '^/connpass': ''
+      }
+    },
+    '/blog': {
+      target: 'https://blog.428lab.net',
+      pathRewrite: {
+        '^/blog': ''
+      }
+    }
   },
   /*
    ** Build configuration
