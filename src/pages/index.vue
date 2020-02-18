@@ -86,6 +86,7 @@
 
 <script>
 import xml2js from "xml2js";
+import axios from "axios"
 
 export default {
   data() {
@@ -94,29 +95,32 @@ export default {
       articles: []
     };
   },
-  async asyncData({$axios}) {
-    // const eventResponse = await $axios.$get(
-    //   "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10",
-    //   // "/connpass/api/v1/event/?series_id=9445&order=2&count=10",
-    //   {
-    //     headers: {
-    //       'X-Requested-With': 'XMLHttpRequest',
-    //       'Access-Control-Allow-Origin': '*'
-    //     }
-    //   }
-    // );
-    const blogResponse = await $axios.$get(
-      "https://blog.428lab.net/rss"
-      // "/blog/rss"
-    );
-    let blogitems = {
+  async asyncData({$axios,app}) {
+    let blogitems = {}
+    let eventItems = {}
+    try {
+      // const eventResponse = await app.$axios.$get(
+      //   "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10",
+      //   {
+      //     headers: {
+      //       "User-Agent": "Node/10"
+      //     }
+      //   }
+      // );
+      // eventItems = eventResponse.events
+      const blogResponse = await app.$axios.$get(
+        "https://blog.428lab.net/rss"
+      );
+
+      xml2js.parseString(blogResponse, (message, xmlres) => {
+        blogitems = xmlres.rss.channel[0].item;
+      });
+    } catch (error) {
+      console.log(error.message);
     }
-    xml2js.parseString(blogResponse, (message, xmlres) => {
-      blogitems = xmlres.rss.channel[0].item;
-    });
 
     return {
-      // events: eventResponse.events,
+      events: eventItems,
       articles: blogitems
     };
   }
