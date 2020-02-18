@@ -24,13 +24,12 @@ script:
 deploy:
   - provider: firebase
     skip-cleanup: true
-    project: "lab-website-72041"
     token: $FIREBASE_CI
     on:
       branch: release
   - provider: firebase
     skip-cleanup: true
-    project: "lab-website-develop-f0781"
+    project: "develop"
     token:
       secure: $FIREBASE_CI
     on:
