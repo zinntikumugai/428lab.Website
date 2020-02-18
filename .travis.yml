@@ -11,21 +11,15 @@ branches:
   - release
   - develop
 
-install:
-  - yarn install
-  - yarn build
-  - pwd
-  - ls
-  - cd functions
-  - pwd
-  - ls
-  - yarn install
-  - cd ../
-  - pwd
-  - ls
-
 script:
   - echo "Skipping tests"
+
+before_deploy:
+  - yarn install
+  - yarn build
+  - cd functions
+  - yarn install
+  - cd ..
 
 deploy:
   # - provider: firebase
@@ -34,8 +28,8 @@ deploy:
   #   on:
   #     branch: release
   - provider: firebase
-    cleanup: true
     # project: "develop"
+    # skip-cleanup: true
     token:
       secure: $FIREBASE_CI
     on:
