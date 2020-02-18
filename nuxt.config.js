@@ -59,18 +59,18 @@ export default {
     baseURL: "/"
   },
   proxy: {
-    '/connpass': {
-      target: 'https://connpass.com',
-      pathRewrite: {
-        '^/connpass': ''
-      }
-    },
-    '/blog': {
-      target: 'https://blog.428lab.net',
-      pathRewrite: {
-        '^/blog': ''
-      }
-    }
+    // '/connpass': {
+    //   target: 'https://connpass.com',
+    //   pathRewrite: {
+    //     '^/connpass': ''
+    //   }
+    // },
+    // '/blog': {
+    //   target: 'https://blog.428lab.net',
+    //   pathRewrite: {
+    //     '^/blog': ''
+    //   }
+    // }
   },
   /*
    ** Build configuration
