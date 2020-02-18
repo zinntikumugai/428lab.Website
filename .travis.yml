@@ -9,6 +9,7 @@ cache:
 branches:
   only:
   - release
+  - develop
 
 install:
   - yarn install
@@ -25,6 +26,14 @@ deploy:
       secure: $FIREBASE_CI
     on:
       branch: release
+  - provider: firebase
+    skip-cleanup: true
+    project: "lab-website-develop-f0781"
+    token:
+      secure: $FIREBASE_CI
+    on:
+      branch: develop
+
 
 # GitHub Pages
 #  provider: pages
