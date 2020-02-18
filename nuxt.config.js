@@ -1,5 +1,6 @@
 export default {
-  mode: 'spa',
+  srcDir: 'src',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -73,6 +74,7 @@ export default {
   /*
    ** Build configuration
    */
+  buildDir: process.env.DEV ? '.nuxt':'./functions/nuxt',
   build: {
     /*
      ** You can extend webpack config here
