@@ -11,15 +11,15 @@ branches:
   - release
   - develop
 
-script:
-  - echo "Skipping tests"
-
-before_deploy:
+install:
   - yarn install
   - yarn build
   - cd functions
   - yarn install
   - cd ..
+
+script:
+  - echo "Skipping tests"
 
 deploy:
   # - provider: firebase
@@ -34,7 +34,6 @@ deploy:
       secure: $FIREBASE_CI
     on:
       branch: develop
-    edge: true
 
 
 # GitHub Pages
