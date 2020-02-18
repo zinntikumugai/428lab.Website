@@ -29,9 +29,8 @@ deploy:
   #     branch: release
   - provider: firebase
     # project: "develop"
-    skip-cleanup: true
-    token:
-      secure: $FIREBASE_CI
+    # skip-cleanup: true
+    token: $FIREBASE_CI
     on:
       branch: develop
 
