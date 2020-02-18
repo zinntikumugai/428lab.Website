@@ -17,7 +17,7 @@ install:
   - pwd
   - ls
   - cd functions
-  - pws
+  - pwd
   - ls
   - yarn install
   - cd ../
