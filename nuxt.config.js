@@ -1,5 +1,5 @@
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
    ** Headers of the page
    */
@@ -35,7 +35,6 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    { src: 'plugins/axios.js', ssr: false }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -49,8 +48,6 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/proxy',
-    '@nuxtjs/dotenv',
   ],
   /*
    ** Axios module configuration
@@ -58,22 +55,20 @@ export default {
    */
   axios: {
     // proxy: true,
-    baseURL: process.browser ? '' : 'http://localhost:3000'
-    // baseURL: '/'
   },
   proxy: {
-    '/connpass': {
-      target: 'https://connpass.com',
-      pathRewrite: {
-        '^/connpass': ''
-      }
-    },
-    '/blog': {
-      target: 'https://blog.428lab.net',
-      pathRewrite: {
-        '^/blog': ''
-      }
-    }
+    // '/connpass': {
+    //   target: 'https://connpass.com',
+    //   pathRewrite: {
+    //     '^/connpass': ''
+    //   }
+    // },
+    // '/blog': {
+    //   target: 'https://blog.428lab.net',
+    //   pathRewrite: {
+    //     '^/blog': ''
+    //   }
+    // }
   },
   /*
    ** Build configuration
