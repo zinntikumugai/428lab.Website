@@ -96,12 +96,10 @@ export default {
   },
   async asyncData({$axios}) {
     const eventResponse = await $axios.$get(
-      // "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
-      "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10"
+      "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
     );
     const blogResponse = await $axios.$get(
-      // "/blog/rss"
-      "https://blog.428lab.net/rss"
+       "/blog/rss"
     );
     let blogitems = {
     }
