@@ -34,12 +34,13 @@ deploy:
   #   on:
   #     branch: release
   - provider: firebase
-    skip_cleanup: true
+    cleanup: true
     # project: "develop"
     token:
       secure: $FIREBASE_CI
     on:
       branch: develop
+    edge: true
 
 
 # GitHub Pages
