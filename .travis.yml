@@ -22,16 +22,15 @@ script:
   - echo "Skipping tests"
 
 deploy:
-  - provider: firebase
-    skip-cleanup: true
-    token: $FIREBASE_CI
-    on:
-      branch: release
+  # - provider: firebase
+  #   skip-cleanup: true
+  #   token: $FIREBASE_CI
+  #   on:
+  #     branch: release
   - provider: firebase
     skip-cleanup: true
     project: "develop"
-    token:
-      secure: $FIREBASE_CI
+    token: $FIREBASE_CI
     on:
       branch: develop
 
