@@ -1,5 +1,5 @@
 export default {
-    mode: 'universal',
+    mode: 'spa',
     /*
      ** Headers of the page
      */
@@ -56,22 +56,22 @@ export default {
      ** See https://axios.nuxtjs.org/options
      */
     axios: {
-        proxy: true
+        // proxy: true
     },
-    proxy: {
-        '/connpass': {
-            target: 'https://connpass.com',
-            pathRewrite: {
-                '^/connpass': ''
-            }
-        },
-        '/blog': {
-            target: 'https://blog.428lab.net',
-            pathRewrite: {
-                '^/blog': ''
-            }
-        }
-    },
+    // proxy: {
+    //     '/connpass': {
+    //         target: 'https://connpass.com',
+    //         pathRewrite: {
+    //             '^/connpass': ''
+    //         }
+    //     },
+    //     '/blog': {
+    //         target: 'https://blog.428lab.net',
+    //         pathRewrite: {
+    //             '^/blog': ''
+    //         }
+    //     }
+    // },
     /*
      ** Build configuration
      */
