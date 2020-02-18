@@ -6,7 +6,8 @@
     "private": true,
     "scripts": {
         "dev": "nuxt",
-        "build": "nuxt build",
+        "build": "nuxt build && yarn build:copy",
+        "build:copy": "rimraf public && mkdirp public/_nuxt && cp -R functions/nuxt/dist/client/* public/_nuxt && cp -R src/static/* public",
         "start": "nuxt start",
         "generate": "nuxt generate",
         "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
@@ -24,5 +25,8 @@
         "nuxt": "^2.0.0",
         "xml2js": "^0.4.23"
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "mkdirp": "^1.0.3",
+        "rimraf": "^3.0.2"
+    }
 }
