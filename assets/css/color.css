@@ -1,0 +1,37 @@
+.text-twitter {
+  color: #1da1f2;
+}
+.text-facebook {
+  color: #1778f2;
+}
+.text-reddit {
+  color: #ff4500;
+}
+.text-hatena {
+  color: #1da1f2;
+}
+.text-github {
+  color: #333;
+}
+.text-connpass {
+  color: #666;
+}
+
+.bg-twitter {
+  background-color: #1da1f2;
+}
+.bg-facebook {
+  background-color: #1778f2;
+}
+.bg-reddit {
+  background-color: #ff4500;
+}
+.bg-hatena {
+  background-color: #1da1f2;
+}
+.bg-github {
+  background-color: #333;
+}
+.bg-connpass {
+  background-color: #666;
+}
