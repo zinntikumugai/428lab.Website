@@ -14,9 +14,15 @@ branches:
 install:
   - yarn install
   - yarn build
+  - pwd
+  - ls
   - cd functions
+  - pws
+  - ls
   - yarn install
   - cd ../
+  - pwd
+  - ls
 
 script:
   - echo "Skipping tests"
