@@ -116,7 +116,7 @@ export default {
     });
 
     return {
-      // events: eventResponse.events,
+      events: eventResponse.events,
       articles: blogitems
     };
   }
