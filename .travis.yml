@@ -34,11 +34,11 @@ before_deploy:
 
 deploy:
 # release
-#  - provider: firebase
-#    skip-cleanup: true
-#    token: $FIREBASE_CI
-#    on:
-#      branch: release
+  - provider: script
+    skip-cleanup: true
+    script: bash deploy.sh release
+    on:
+      branch: release
 # develop
   - provider: script
     skip-cleanup: true
