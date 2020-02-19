@@ -21,6 +21,15 @@ install:
 script:
   - echo "Skipping tests"
 
+before_deploy:
+  # - yarn install
+  # - yarn build
+  # - cd functions
+  # - yarn install
+  # - cd ..
+  - ls
+  - pwd
+
 deploy:
   - provider: firebase
     skip-cleanup: true
@@ -28,10 +37,9 @@ deploy:
     on:
       branch: release
   - provider: firebase
-    skip-cleanup: true
     project: "develop"
-    token:
-      secure: $FIREBASE_CI
+    skip-cleanup: true
+    token: $FIREBASE_CI
     on:
       branch: develop
 
