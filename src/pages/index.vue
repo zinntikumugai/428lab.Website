@@ -88,12 +88,12 @@
 import xml2js from "xml2js";
 
 export default {
-  data() {
-    return {
-      events: [],
-      articles: []
-    };
-  },
+  // data() {
+  //   return {
+  //     events: [],
+  //     articles: []
+  //   };
+  // },
   async asyncData({app}) {
     let blogitems = {}
     let eventItems = {}
