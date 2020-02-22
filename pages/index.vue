@@ -84,6 +84,7 @@
 
 <script>
 import xml2js from "xml2js";
+import axiosJsonpAdapter from "axios-jsonp";
 
 export default {
   data() {
@@ -93,17 +94,21 @@ export default {
     };
   },
   async asyncData({ $axios }) {
-    // const eventResponse = await $axios.$get(
-    //   "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10&callback=samplefunction",
-    //   // "/connpass/api/v1/event/?series_id=9445&order=2&count=10",
-    //   {
-    //     headers: {
-    //       'X-Requested-With': 'XMLHttpRequest',
-    //       'Access-Control-Allow-Origin': '*'
-    //     }
-    //   }
-    // );
     let blogitems = {};
+    let eventItem = {};
+
+    const eventResponse = await $axios.$get(
+      "https://connpass.com/api/v1/event/",
+      {
+        adapter: axiosJsonpAdapter,
+        params: {
+          series_id: 9445,
+          order: 2,
+          count: 10,
+        }
+      }
+    );
+    eventItem = eventResponse.events;
     try {
       const blogResponse = await $axios.$get("https://blog.428lab.net/rss");
       xml2js.parseString(blogResponse, (message, xmlres) => {
@@ -115,7 +120,7 @@ export default {
     }
 
     return {
-      // events: eventResponse.events,
+      events: eventItem,
       articles: blogitems
     };
   }
