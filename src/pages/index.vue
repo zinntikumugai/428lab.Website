@@ -98,6 +98,7 @@ export default {
   async asyncData({$axios,app}) {
     let blogitems = {}
     let eventItems = {}
+    console.log('test');
     try {
       // const eventResponse = await app.$axios.$get(
       //   "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10",
