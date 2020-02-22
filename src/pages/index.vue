@@ -100,8 +100,8 @@ export default {
     let eventItems = {}
     try {
       const eventResponse = await app.$axios.$get(
-        // "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10"
-        "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
+        "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10"
+        // "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
       );
       eventItems = eventResponse.events
       // const blogResponse = await app.$axios.$get(
