@@ -56,8 +56,8 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    proxy: true,
-    baseURL: "/"
+    // proxy: true,
+    // baseURL: "/"
   },
   proxy: {
     // '/connpass': {
