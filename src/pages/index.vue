@@ -105,11 +105,11 @@ export default {
         // "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
         {
           adapter: axiosJsonpAdapter,
+          callbackParamName: "callback",
           params: {
             series_id: 9445,
             order: 2,
             count: 10,
-            callback: 'cb',
           }
         }
       );
