@@ -98,7 +98,7 @@ export default {
     let blogitems = {}
     let eventItems = {}
     try {
-      const eventResponse = await app.$axios.$get(
+      await app.$axios.$get(
         "https://connpass.com/api/v1/event/",
         // "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
         {
@@ -106,11 +106,16 @@ export default {
             series_id: 9445,
             order: 2,
             count: 10,
-            callback: 'sample'
-          }
+          },
+          headers: {
+            'Content-Type':'application/json',
+            'User-Agent': 'Node/10'
+          },
+          data: {}
         }
-      );
-      eventItems = eventResponse.events;
+      ).then( res => {
+        eventItems = res.events;
+      });
 
       // const blogResponse = await app.$axios.$get(
       //   "https://blog.428lab.net/rss"
@@ -126,7 +131,7 @@ export default {
 
     return {
       events: eventItems,
-      // articles: blogitems
+      articles: blogitems
     };
   }
 };
