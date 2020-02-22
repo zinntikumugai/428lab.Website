@@ -106,7 +106,7 @@ export default {
             series_id: 9445,
             order: 2,
             count: 10,
-            callback: sample
+            callback: 'sample'
           }
         }
       );
