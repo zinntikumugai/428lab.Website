@@ -98,31 +98,25 @@ export default {
   async asyncData({$axios,app}) {
     let blogitems = {}
     let eventItems = {}
-    console.log('test');
     try {
-      // const eventResponse = await app.$axios.$get(
-      //   "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10",
-      //   {
-      //     headers: {
-      //       "User-Agent": "Node/10"
-      //     }
-      //   }
-      // );
-      // eventItems = eventResponse.events
-      const blogResponse = await app.$axios.$get(
-        "https://blog.428lab.net/rss"
+      const eventResponse = await app.$axios.$get(
+        "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10"
       );
+      eventItems = eventResponse.events
+      // const blogResponse = await app.$axios.$get(
+      //   "https://blog.428lab.net/rss"
+      // );
 
-      xml2js.parseString(blogResponse, (message, xmlres) => {
-        blogitems = xmlres.rss.channel[0].item;
-      });
+      // xml2js.parseString(blogResponse, (message, xmlres) => {
+      //   blogitems = xmlres.rss.channel[0].item;
+      // });
     } catch (error) {
       console.log(error.message);
     }
 
     return {
       events: eventItems,
-      articles: blogitems
+      // articles: blogitems
     };
   }
 };
