@@ -101,19 +101,26 @@ export default {
     let eventItems = {}
     try {
       // const eventResponse = await app.$axios.$get(
-      const eventResponse = await axios.get(
-        "https://connpass.com/api/v1/event/",
-        // "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
-        {
-          adapter: axiosJsonpAdapter,
-          params: {
-            series_id: 9445,
-            order: 2,
-            count: 10,
-          }
+      //   "https://connpass.com/api/v1/event/",
+      //   // "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
+      //   {
+      //     adapter: axiosJsonpAdapter,
+      //     params: {
+      //       series_id: 9445,
+      //       order: 2,
+      //       count: 10,
+      //     }
+      //   }
+      // );
+      // 住所apiを叩く
+      const res = await app.$axios.$get(ZIPCODE_API_URL, {
+        adapter: axiosJsonpAdapter,
+        params: {
+          zipcode: '1140003'
         }
-      );
-      eventItems = eventResponse.events
+      })
+      console.log(res);
+
       // const blogResponse = await app.$axios.$get(
       //   "https://blog.428lab.net/rss"
       // );
