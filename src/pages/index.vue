@@ -112,6 +112,7 @@ export default {
       //   blogitems = xmlres.rss.channel[0].item;
       // });
     } catch (error) {
+      console.log('get-data error');
       console.log(error.message);
     }
 
