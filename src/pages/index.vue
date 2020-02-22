@@ -123,7 +123,7 @@ export default {
       // });
     } catch (error) {
       console.log('get-data error');
-      console.log(error.message);
+      console.log(error);
     }
 
     return {
