@@ -87,6 +87,7 @@
 <script>
 import xml2js from "xml2js";
 import axios from "axios"
+import axiosJsonpAdapter from 'axios-jsonp'
 
 export default {
   data() {
@@ -95,13 +96,22 @@ export default {
       articles: []
     };
   },
-  async asyncData({$axios,app}) {
+  async asyncData({app}) {
     let blogitems = {}
     let eventItems = {}
     try {
       const eventResponse = await app.$axios.$get(
-        "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10"
+        "https://connpass.com/api/v1/event/series_id=9445&order=2&count=10",
         // "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
+        {
+          adapter: axiosJsonpAdapter,
+          params: {
+            series_id: 9445,
+            order: 2,
+            count: 10,
+            callback: 'cb',
+          }
+        }
       );
       eventItems = eventResponse.events
       // const blogResponse = await app.$axios.$get(
