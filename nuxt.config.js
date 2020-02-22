@@ -57,7 +57,7 @@ export default {
    */
   axios: {
     // proxy: true,
-    // baseURL: "/"
+    baseURL: ""
   },
   proxy: {
     // '/connpass': {
