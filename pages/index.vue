@@ -146,18 +146,23 @@ export default {
     let blogitems = {};
     let eventItem = {};
 
-    const eventResponse = await $axios.$get(
-      "https://connpass.com/api/v1/event/",
-      {
-        adapter: axiosJsonpAdapter,
-        params: {
-          series_id: 9445,
-          order: 2,
-          count: 10
-        }
-      }
-    );
-    eventItem = eventResponse.events;
+    try {
+        const eventResponse = await $axios.$get(
+          "https://connpass.com/api/v1/event/",
+          {
+            adapter: axiosJsonpAdapter,
+            params: {
+              series_id: 9445,
+              order: 2,
+              count: 10
+            }
+          }
+        );
+        eventItem = eventResponse.events;
+    } catch (error) {
+      console.log("connpass Error")
+      console.log(error.message)
+    }
     try {
       const blogResponse = await $axios.$get("https://blog.428lab.net/rss");
       xml2js.parseString(blogResponse, (message, xmlres) => {
