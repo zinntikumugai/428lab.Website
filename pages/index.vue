@@ -20,7 +20,7 @@
       <div class="">
         <section v-if="tab_contents == 'blog'">
           <div
-            v-for="item in articles.slice(0, 5)"
+            v-for="item in articles"
             :key="item.event_id"
             target="_blank"
             class="row mt-3"
@@ -66,7 +66,7 @@
         </section>
         <section v-if="tab_contents == 'event'">
           <div
-            v-for="item in events.slice(0, 5)"
+            v-for="item in events"
             :key="item.event_id"
             target="_blank"
             class="mt-3"
@@ -166,7 +166,7 @@ export default {
     try {
       const blogResponse = await $axios.$get("https://blog.428lab.net/rss");
       xml2js.parseString(blogResponse, (message, xmlres) => {
-        blogitems = xmlres.rss.channel[0].item;
+        blogitems = xmlres.rss.channel[0].item.slice(0, 5);
       });
     } catch (error) {
       console.log(error.response);
