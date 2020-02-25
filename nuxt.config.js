@@ -63,18 +63,9 @@ export default {
     baseURL: process.env.BASE_URL
   },
   proxy: {
-    // '/connpass': {
-    //   target: 'https://connpass.com',
-    //   pathRewrite: {
-    //     '^/connpass': ''
-    //   }
-    // },
-    // '/blog': {
-    //   target: 'https://blog.428lab.net',
-    //   pathRewrite: {
-    //     '^/blog': ''
-    //   }
-    // }
+    '/api': {
+      target: 'https://lab-website-develop-f0781.web.app'
+    }
   },
   /*
    ** Build configuration
