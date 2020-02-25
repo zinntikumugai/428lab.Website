@@ -12,9 +12,9 @@ const nuxt = new Nuxt({
   buildDir: "nuxt",
   build: {},
   dev: false,
-  modules: [
+  // modules: [
     // "@nuxtjs/axios"
-  ]
+  // ]
   // ,render: {
   //   csp: {
   //     enabled: false,

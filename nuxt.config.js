@@ -1,6 +1,9 @@
 export default {
   srcDir: 'src',
   mode: 'universal',
+  env: {
+    baseUrl: process.env.BASE_URL || "http://localhost:3000"
+  },
   /*
    ** Headers of the page
    */
@@ -57,7 +60,7 @@ export default {
    */
   axios: {
     // proxy: true,
-    // baseURL: process.browser ? '' : '/'
+    baseURL: process.env.BASE_URL
   },
   proxy: {
     // '/connpass': {
