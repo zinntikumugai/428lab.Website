@@ -2,11 +2,11 @@
   <article class="container">
     <div class="row">
       <section class="col-lg-4 pt-4">
-        <h3 class="">ラボ所在地</h3>
+        <h3 class>ラボ所在地</h3>
         <p class="h5">
-          〒160-0004<br />
-          東京都 新宿区 四谷二丁目 8-8<br />
-          第5三和ビル 802号室
+          〒160-0004
+          <br />東京都 新宿区 四谷二丁目 8-8
+          <br />第5三和ビル 802号室
         </p>
       </section>
       <section class="col-lg-8 px-0">
@@ -16,25 +16,25 @@
           height="350"
           frameborder="0"
           style="border:0;"
-          allowfullscreen=""
+          allowfullscreen
         ></iframe>
       </section>
     </div>
     <div class="row mt-4">
-      <section class="col-lg-6 ">
-        <h3 class="">ブログ記事</h3>
+      <section class="col-lg-6">
+        <h3 class>ブログ記事</h3>
         <ul>
           <li v-for="item in articles" :key="item.event_id" target="_blank">
             <a :href="item.link[0]" target="_blank">{{ item.title[0] }}</a>
           </li>
-              <!-- link: [ 'https://blog.428lab.net/entry/2020/01/28/230000' ],
+          <!-- link: [ 'https://blog.428lab.net/entry/2020/01/28/230000' ],
               description: []
               pubDate: [ 'Tue, 28 Jan 2020 23:00:00 +0900' ],
-              category: [ '機械学習', '自作PC', 'ハードウェア', '料理' ], -->
+          category: [ '機械学習', '自作PC', 'ハードウェア', '料理' ],-->
         </ul>
       </section>
-      <section class="col-lg-6 ">
-        <h3 class="">イベント情報</h3>
+      <section class="col-lg-6">
+        <h3 class>イベント情報</h3>
         <ul>
           <li v-for="item in events" :key="item.event_id" target="_blank">
             <a :href="item.event_url" target="_blank">{{ item.title }}</a>
@@ -61,16 +61,14 @@
             lon: '139.727028400000',
             series:
             { id: 9445, title: '四谷ラボ', url: 'https://428lab.connpass.com/' }
-          } -->
+          }-->
         </ul>
       </section>
       <section class="col-12">
-        <h3 class="">スポンサー</h3>
+        <h3 class>スポンサー</h3>
         <ul>
           <li>
-            <a href="https://www.zenryokukikai.com/" target="_blank"
-              >全力機械株式会社</a
-            >
+            <a href="https://www.zenryokukikai.com/" target="_blank">全力機械株式会社</a>
           </li>
         </ul>
       </section>
@@ -79,54 +77,23 @@
             <p>
                 このWebページは所属メンバー、イベント参加者、また皆様のご協力により運営デザイン変更・フレームワーク導入等、皆様のフォーク・プルリクエストを募集しております。
             </p>
-        </section> -->
+    </section>-->
     <div class="p-5"></div>
   </article>
 </template>
 
 <script>
-import xml2js from "xml2js";
-
 export default {
-  // data() {
-  //   return {
-  //     events: [],
-  //     articles: []
-  //   };
-  // },
-  async asyncData({app}) {
-    let blogitems = {}
-    let eventItems = {}
+  async asyncData({ app }) {
+    let blogitems = {};
+    let eventItems = {};
+    let response;
     try {
-      await app.$axios.$get(
-        "https://connpass.com/api/v1/event/",
-        // "/connpass/api/v1/event/?series_id=9445&order=2&count=10"
-        {
-          params: {
-            series_id: 9445,
-            order: 2,
-            count: 10,
-          },
-          headers: {
-            'Content-Type':'application/json',
-            'User-Agent': 'Node/10'
-          },
-          data: {}
-        }
-      ).then( res => {
-        eventItems = res.events;
-      });
-
-      // const blogResponse = await app.$axios.$get(
-      //   "https://blog.428lab.net/rss"
-      // );
-
-      // xml2js.parseString(blogResponse, (message, xmlres) => {
-      //   blogitems = xmlres.rss.channel[0].item;
-      // });
+      response = await app.$axios.$get("/api");
+      eventItems = response.connpass.events;
+      blogitems = response.rss.channel[0].item;
     } catch (error) {
-      console.log('get-data error');
-      console.log(error);
+      console.log(error.message);
     }
 
     return {
