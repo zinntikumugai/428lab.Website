@@ -5,5 +5,5 @@ if [ $# -ne 1 ]; then
 fi
 PROJECT=$1
 yarn global add firebase-tools
-cross-env BASE_URL=https:\/\/`firebase use --project $PROJECT | grep $PROJECT`.web.app yarn build
+cross-env BASE_URL=https:\/\/`firebase use --project $PROJECT --token $FIREBASE_CI | grep $PROJECT`.web.app yarn build
 firebase deploy --project=$PROJECT --token $FIREBASE_CI --only hosting,functions
