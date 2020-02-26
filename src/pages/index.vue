@@ -6,28 +6,23 @@
           class="text-center px-3 py-1 mb-2 border-bottom border-secoundary"
           v-bind:class="{ 'border-success': tab_contents == 'blog' }"
           @click="tab_contents = 'blog'"
-        >
-          ブログ新着
-        </div>
+        >ブログ新着</div>
         <div
           class="text-center px-3 py-1 mb-2 border-bottom border-secoundary"
           v-bind:class="{ 'border-success': tab_contents == 'event' }"
           @click="tab_contents = 'event'"
-        >
-          イベント
-        </div>
+        >イベント</div>
       </div>
-      <div class="">
+      <div class>
         <section v-if="tab_contents == 'blog'">
-          <div
-            v-for="item in articles"
-            :key="item.event_id"
-            target="_blank"
-            class="row mt-3"
-          >
+          <div v-for="item in articles" :key="item.event_id" target="_blank" class="row mt-3">
             <div class="d-none d-md-block col-md-3">
               <a :href="item.link[0]" target="_blank">
-                <img :src="item.enclosure[0].$.url" class="img-fluid" />
+                <no-ssr>
+                  <lazy-component>
+                    <img :src="item.enclosure[0].$.url" class="img-fluid" />
+                  </lazy-component>
+                </no-ssr>
               </a>
             </div>
             <div class="col-12 col-md-9">
@@ -41,9 +36,7 @@
                   class="p-1 mr-2 border rounded badge"
                   v-for="cat in item.category"
                   :key="cat.id"
-                >
-                  {{ cat }}
-                </div>
+                >{{ cat }}</div>
               </div>
             </div>
           </div>
@@ -52,11 +45,11 @@
               pubDate: [ 'Tue, 28 Jan 2020 23:00:00 +0900' ],
               category: [ '機械学習', '自作PC', 'ハードウェア', '料理' ],
               enclosure[ $.url ]
-              -->
+          -->
           <div class="d-flex mt-3 justify-content-center">
             <div class="border rounded d-flex align-items-center">
               <a href="https://blog.428lab.net">
-                <img src="/blandlogo/hatena_text.svg" alt="" height="50">
+                <img src="/blandlogo/hatena_text.svg" alt height="50" />
               </a>
               <a href="https://blog.428lab.net" class="text-dark">
                 <i class="fas fa-caret-right fa-2x fa-fw"></i>
@@ -65,14 +58,9 @@
           </div>
         </section>
         <section v-if="tab_contents == 'event'">
-          <div
-            v-for="item in events"
-            :key="item.event_id"
-            target="_blank"
-            class="mt-3"
-          >
-            <a :href="item.event_url" target="_blank"
-              ><span class="text-dark">{{ item.title }} </span>
+          <div v-for="item in events" :key="item.event_id" target="_blank" class="mt-3">
+            <a :href="item.event_url" target="_blank">
+              <span class="text-dark">{{ item.title }}</span>
             </a>
             <br />
             <div class="d-flex align-items-center mt-1">
@@ -83,7 +71,7 @@
           <div class="d-flex mt-3 justify-content-center">
             <div class="border rounded d-flex align-items-center p-2">
               <a href="https://428lab.connpass.com" class="mt-1 pl-2">
-                <img src="/blandlogo/connpass_logo_2.png" alt="" height="28">
+                <img src="/blandlogo/connpass_logo_2.png" alt height="28" />
               </a>
               <a href="https://428lab.connpass.com" class="text-dark">
                 <i class="fas fa-caret-right fa-2x fa-fw"></i>
@@ -114,8 +102,7 @@
         ></iframe>
       </section>
     </div>
-    <div class="row mt-4">
-    </div>
+    <div class="row mt-4"></div>
     <div class="p-5"></div>
   </article>
 </template>
@@ -124,11 +111,11 @@
 export default {
   data() {
     return {
-      tab_contents: 'blog'
-    }
+      tab_contents: "blog"
+    };
   },
   methods: {
-    dateFormat(date){
+    dateFormat(date) {
       // TODO: 後ほどMoment.jsに入れ直す。
       var dateStr = new Date(date);
       var year = dateStr.getFullYear();
@@ -138,7 +125,7 @@ export default {
       var hour = dateStr.getHours();
       var minute = dateStr.getMinutes();
       var second = dateStr.getSeconds();
-      return year + '/' + month + '/' + day + ' ' + hour + ':' + minute;
+      return year + "/" + month + "/" + day + " " + hour + ":" + minute;
     }
   },
   async asyncData({ app }) {
