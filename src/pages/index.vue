@@ -122,6 +122,25 @@
 
 <script>
 export default {
+  data() {
+    return {
+      tab_contents: 'blog'
+    }
+  },
+  methods: {
+    dateFormat(date){
+      // TODO: 後ほどMoment.jsに入れ直す。
+      var dateStr = new Date(date);
+      var year = dateStr.getFullYear();
+      var month = dateStr.getMonth() + 1;
+      var day = dateStr.getDate();
+      var week = dateStr.getDay();
+      var hour = dateStr.getHours();
+      var minute = dateStr.getMinutes();
+      var second = dateStr.getSeconds();
+      return year + '/' + month + '/' + day + ' ' + hour + ':' + minute;
+    }
+  },
   async asyncData({ app }) {
     let blogitems = {};
     let eventItems = {};
