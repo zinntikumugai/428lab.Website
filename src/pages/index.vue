@@ -142,7 +142,7 @@ export default {
 
     return {
       events: eventItems,
-      articles: blogitems
+      articles: blogitems.slice(0, 3)
     };
   }
 };
