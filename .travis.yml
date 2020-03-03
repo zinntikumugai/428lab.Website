@@ -36,7 +36,7 @@ deploy:
 # release
   - provider: script
     skip-cleanup: true
-    script: bash deploy.sh release
+    script: bash deploy.sh default
     on:
       branch: release
 # develop
