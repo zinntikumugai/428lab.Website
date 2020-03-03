@@ -13,6 +13,5 @@ if [ -n "$FIREBASE_CI" ]; then
 fi
 PROJECT_ID=$(firebase use ${FIREBASE_ARG})
 
-BASE_URL="https://${PROJECT_ID}.web.app"
-yarn build
+cross-env BASE_URL="https://${PROJECT_ID}.web.app" yarn build
 firebase deploy ${FIREBASE_ARG} --only hosting,functions
