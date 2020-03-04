@@ -13,7 +13,7 @@ const nuxt = new Nuxt({
   build: {},
   dev: false,
   // modules: [
-    // "@nuxtjs/axios"
+  // "@nuxtjs/axios"
   // ]
   // ,render: {
   //   csp: {
@@ -60,4 +60,4 @@ app.use("/api", async (req, res) => {
   })
 })
 app.use(handleReques);
-exports.ssr = functions.https.onRequest(app);
+exports.ssr = functions.region('asia-northeast1').https.onRequest(app);
