@@ -109,14 +109,14 @@ export default {
     try {
       response = await app.$axios.$get("/api");
       eventItems = response.connpass.events;
-      blogitems = response.rss.channel[0].item;
+      blogitems = response.rss.channel[0].item.slice(0, 5);
     } catch (error) {
       console.log(error.message);
     }
 
     return {
       events: eventItems,
-      articles: blogitems.slice(0, 5)
+      articles: blogitems
     };
   }
 };

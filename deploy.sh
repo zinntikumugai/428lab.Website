@@ -1,9 +1,17 @@
 #!/bin/bash
+
 if [ $# -ne 1 ]; then
   echo "引数エラー"
-  exit
+  exit 1
 fi
+
 PROJECT=$1
-yarn global add firebase-tools
-cross-env BASE_URL=https:\/\/`firebase use --project $PROJECT --token $FIREBASE_CI | grep $PROJECT`.web.app yarn build
-firebase deploy --project=$PROJECT --token $FIREBASE_CI --only hosting,functions
+FIREBASE_ARG=" --project ${PROJECT}"
+if [ -n "$FIREBASE_CI" ]; then
+  yarn global add firebase-tools # HACK: Need only CI build?
+  FIREBASE_ARG="${FIREBASE_ARG} --token ${FIREBASE_CI}"
+fi
+PROJECT_ID=$(firebase use ${FIREBASE_ARG})
+
+cross-env BASE_URL=https:\/\/${PROJECT_ID}.web.app yarn build
+# firebase deploy ${FIREBASE_ARG} --only hosting,functions
