@@ -14,4 +14,4 @@ fi
 PROJECT_ID=$(firebase use ${FIREBASE_ARG})
 
 cross-env BASE_URL=https:\/\/${PROJECT_ID}.web.app yarn build
-# firebase deploy ${FIREBASE_ARG} --only hosting,functions
+firebase deploy ${FIREBASE_ARG} --only hosting,functions
