@@ -1,10 +1,6 @@
 const functions = require('firebase-functions');
 const express = require('express');
 const { Nuxt } = require('nuxt');
-const request = require("request")
-const cors = require("cors")
-const axios = require("axios")
-const xml2js = require("xml2js")
 
 // Nuxt
 const app = express();
@@ -30,6 +26,8 @@ async function handleReques(req, res) {
   return await nuxt.render(req, res);
 };
 app.use("/api", async (req, res) => {
+  const axios = require("axios")
+  const xml2js = require("xml2js")
   const connpassURI = "https://connpass.com/api/v1/event/?series_id=9445&order=2&count=10"
   const rssURI = "https://blog.428lab.net/rss"
 
