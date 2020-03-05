@@ -71,7 +71,7 @@ export default {
       { rel: 'icon alternate', type: 'image/x-icon', href: '/favicon.ico' },
     ],
     script: [
-      { src: "https://kit.fontawesome.com/18956ba71f.js", crossorigin: "anonymous" }
+      // { src: "https://kit.fontawesome.com/18956ba71f.js", crossorigin: "anonymous" }
     ]
   },
   /*
